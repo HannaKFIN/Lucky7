@@ -9,23 +9,6 @@ public class ArvoNumero {
 		// Jos joku numeroista on seitsemän, kerro käyttäjälle, että voitit. 
 		// Jos mikään ei ole seitsemän, kerro käyttäjälle, että hävisit. Lopuksi ohjelma loppuu.
 		
-		Random random = new Random();
-		
-		// arvotaan numero väliltä 0-9 ja lisätään 1, jotta saadaan numero väliltä 1-10.
-		int n1 = random.nextInt(10) + 1;
-		int n2 = random.nextInt(10) + 1;
-		int n3 = random.nextInt(10) + 1;
-		
-		if (n1 == 7 || n2 == 7 || n3 == 7) 
-		{
-			System.out.println("Voitit!");
-			System.out.println(n1 + " , " + n2 + " ja " + n3);
-			
-		} else {
-			System.out.println("Hävisit!");
-			System.out.println(n1 + " , " + n2 + " ja " + n3);
-		}
-		
 		// Vaihe 2 Jatka peliä esim. seuraavasti:
 		//
 		//· Lisää rahat peliin. Käyttäjällä on alussa 5 € rahaa. Joka peli maksaa euron. 
@@ -35,6 +18,63 @@ public class ArvoNumero {
 		//· Tarvitset siis jonkinlaisen toistorakenteen...
 		//
 		//· Jos menet ihan sekaisin ehtorakenteissa, tehtävänannon lopussa on linkki vuokaavioon.
+		
+		Random random = new Random();
+		
+		int money = 5;
+		
+		// Toistetaan niin kauan, kun rahaa on:
+		do 
+		{
+			// Vähennetään pelin hinta eli 1e:
+			money = money - 1;	
+			
+			// Arvotaan numero väliltä 0-9 ja lisätään 1, jotta saadaan numero väliltä 1-10.
+		
+			int n1 = random.nextInt(10) + 1;
+			int n2 = random.nextInt(10) + 1;
+			int n3 = random.nextInt(10) + 1;
+
+
+			if (n1 == 7 || n2 == 7 || n3 == 7) 
+			{
+				System.out.println("Voitit!");
+				System.out.println("Numerosi olivat: " + n1 + " , " + n2 + " ja " + n3);
+				
+				// Jos vain yksi seiska, lisää 3e:
+				
+				if ((n1 == 7 && n2 != 7 && n3 != 7) || (n1 != 7 && n2 == 7 && n3 != 7) || (n1 != 7 && n2 != 7 && n3 == 7))
+				{
+				System.out.println("Sait yhden seiskan. Voitit 3e!");
+				money = money + 3;
+				}
+				
+				 // Jos kaksi seiskaa, lisää vielä 2e:
+				
+				else if ((n1 == 7 && n2 == 7 && n3 != 7 ) || (n1 == 7 && n3 == 7 && n2 != 7 ) || (n2 == 7 && n3 == 7 && n1 != 7 ))
+				{
+				System.out.println("Sait kaksi seiskaa. Voitit 5e!");
+				money = money + 2;
+				}
+				// Jos kaikki seiskoja, lisää vielä 2e:
+				else if (n1 == 7 && n2 == 7 && n3 == 7)
+				{
+					System.out.println("Sait kolme seiskaa. Voitit 7e!");	
+				money = money + 7;
+				}
+				
+
+			} else {
+				System.out.println("Hävisit!");
+				System.out.println("Numerosi olivat: " + n1 + " , " + n2 + " ja " + n3);
+			}
+			
+			System.out.println("Sinulla on rahaa jäljellä: " + money + "e");
+			System.out.println("");
+			
+		}while (money > 0);
+		
+
 		
 		
 		
