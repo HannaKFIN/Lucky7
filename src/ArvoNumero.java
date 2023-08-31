@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class ArvoNumero {
 
@@ -19,9 +20,23 @@ public class ArvoNumero {
 		//
 		//· Jos menet ihan sekaisin ehtorakenteissa, tehtävänannon lopussa on linkki vuokaavioon.
 		
-		Random random = new Random();
+		// Vaihe 3 Jatka peliä esim. seuraavasti:
+		//
+		//· Pelaaja voi alussa syöttää rahamäärän, jolla pelaa.
+		//
+		//· Yhden pelikerran jälkeen kysytään: "Haluatko pelata uudestaan? Jos haluat pelata, paina Enter. 
+		// Jos et halua pelata, kirjoita e ja paina Enter."
 		
-		int money = 5;
+		Random random = new Random();
+		Scanner sc = new Scanner(System.in);
+		
+		String startingMoney;
+		String uudestaan;
+		
+		// Kysytään käyttäjältä rahamäärä, jolla aloittaa:
+		System.out.println("Syötä rahamäärä, jolla aloitat pelin: ");
+		startingMoney = sc.nextLine();
+		int money = Integer.parseInt(startingMoney);
 		
 		// Toistetaan niin kauan, kun rahaa on:
 		do 
@@ -72,18 +87,26 @@ public class ArvoNumero {
 			System.out.println("Sinulla on rahaa jäljellä: " + money + "e");
 			System.out.println("");
 			
-		}while (money > 0);
+//			"Haluatko pelata uudestaan? Jos haluat pelata, paina Enter. 
+			// Jos et halua pelata, kirjoita e ja paina Enter."
+			
+		
+			System.out.println("Haluatko pelata uudestaan?");
+			System.out.println("Jos haluat pelata, paina Enter.");
+			System.out.println("Jos et halua pelata, kirjoita e ja paina Enter.");
+
+			uudestaan = sc.nextLine();
+			
+			
+		}while (money > 0 && !uudestaan.equals("e"));
+		
+		System.out.println("Peli loppui, koska painoit e tai rahasi loppuivat.");
 		
 
 		
 		
 		
-		// Vaihe 3 Jatka peliä esim. seuraavasti:
-		//
-		//· Pelaaja voi alussa syöttää rahamäärän, jolla pelaa.
-		//
-		//· Yhden pelikerran jälkeen kysytään: "Haluatko pelata uudestaan? Jos haluat pelata, paina Enter. 
-		// Jos et halua pelata, kirjoita e ja paina Enter."
+
 
 	}
 
